@@ -39,6 +39,11 @@ hash = "861e802b42e7495f6bb604a0af0a72a0b538eda9b49f45d9e08e7ad70384d463"
 metafile = true
 
 [[files]]
+file = "mods/sodium.pw.toml"
+hash = "be0c8881821da897824770b2a71f0f3765a233eda69b295fa5b92ffe8a25014c"
+metafile = true
+
+[[files]]
 file = "mods/yungs-api.pw.toml"
 hash = "2a72d78e734a09f3034fa77d850cc252cad1bc2b146754491e4792959d4cff96"
 metafile = true
