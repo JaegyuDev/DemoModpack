@@ -30,7 +30,6 @@ jobs:
               run: |
                 mkdir ./out/
                 packwiz modrinth export -o ./out/${{ github.event.repository.name }}.mrpack
-                packwiz modrinth export -o ./out/${{ github.event.repository.name }}.mrpack
 
             - name: Determine next version
               id: get_version
