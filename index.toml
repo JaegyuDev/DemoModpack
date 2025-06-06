@@ -1,0 +1,44 @@
+hash-format = "sha256"
+
+[[files]]
+file = ".github/workflows/release-pack.yml"
+hash = "3d71067570875a5dee1c746d9ffb74224bc99e3d05e2faf5ccf185030d09956b"
+
+[[files]]
+file = "LICENSE"
+hash = "d66e6b392225beaf78fd5ef7f397029329c75c1f2bd63eb91f5baec69f850439"
+
+[[files]]
+file = "mods/balm.pw.toml"
+hash = "2b39af0fe4a842222374eec49397398495a20358c13ff9879170077012afe2eb"
+metafile = true
+
+[[files]]
+file = "mods/cloth-config.pw.toml"
+hash = "446c173c87b7908daee86b0dee89c6b628c77beb7a0bc091ff5252b7c0062080"
+metafile = true
+
+[[files]]
+file = "mods/fabric-api.pw.toml"
+hash = "a3642d02cf384305528c3d7ecdbdd8cd88a89156d4d1be057b9c9e5e4d8309b2"
+metafile = true
+
+[[files]]
+file = "mods/geckolib.pw.toml"
+hash = "a0a4120479b3a00265797ba4ab4b351e7ea6730f1a0394d069da0d92165a3bd9"
+metafile = true
+
+[[files]]
+file = "mods/little-joys.pw.toml"
+hash = "fa6a50e766913ad98b7bbed12b6c89f9831ec63c648dcc390a684bdf5e5c5eaf"
+metafile = true
+
+[[files]]
+file = "mods/ribbits.pw.toml"
+hash = "861e802b42e7495f6bb604a0af0a72a0b538eda9b49f45d9e08e7ad70384d463"
+metafile = true
+
+[[files]]
+file = "mods/yungs-api.pw.toml"
+hash = "2a72d78e734a09f3034fa77d850cc252cad1bc2b146754491e4792959d4cff96"
+metafile = true

@@ -1,0 +1,13 @@
+name = "Demo Modpack"
+author = "JaegyuDev, TylenolWasTaken"
+version = "1.0.0"
+pack-format = "packwiz:1.1.0"
+
+[index]
+file = "index.toml"
+hash-format = "sha256"
+hash = "212c9576b221961b9d50011911ed2759e5b64e50ec2b0f3aa637dff2a2fd8ec5"
+
+[versions]
+fabric = "0.16.14"
+minecraft = "1.21.1"
