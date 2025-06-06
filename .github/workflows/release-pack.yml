@@ -1,0 +1,71 @@
+name: release pack on push
+on:
+    push:
+        branches:
+            - master
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        
+        steps:
+            - name: Check out repository
+              uses: actions/checkout@v4
+              with:
+                fetch-depth: 0
+            
+            - name: Set up Go
+              uses: actions/setup-go@v4
+              with:
+                go-version: '1.21'
+
+            - name: Install packwiz
+              run: |
+                go install github.com/packwiz/packwiz@latest
+
+            - name: Check if packwiz is in path
+              run: |
+                which packwiz
+            
+            - name: Build
+              run: |
+                mkdir ./out/
+                packwiz modrinth export -o ./out/${{ github.repository.name }}.mrpack
+
+            - name: Determine next version
+              id: get_version
+              run: |
+                git fetch --tags
+
+                LAST_TAG=$(git describe --tags "$(git rev-list --tags --max-count=1)" 2>/dev/null || echo "v0.0.0")
+                echo "Found last tag: $LAST_TAG"
+
+                # Strip the leading “v” (so “1.2.3”)
+                SEMVER=${LAST_TAG#v}
+
+                IFS='.' read -r MAJOR MINOR PATCH <<< "$SEMVER"
+                PATCH=$((PATCH + 1))
+                NEW_VERSION="v${MAJOR}.${MINOR}.${PATCH}"
+                echo "New version will be: $NEW_VERSION"
+
+                echo "new_version=$NEW_VERSION" >> "$GITHUB_OUTPUT"
+
+            - name: Create Release
+              id: create_release
+              uses: actions/create-release@v1
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+              with:
+                tag_name: ${{ steps.get_version.outputs.new_version }}
+                release_name: Release ${{ steps.get_version.outputs.new_version }}
+                body: |
+                  Automated release
+                draft: false
+                prerelease: false
+            
+            - name: Upload assets
+              uses: actions/upload-release-asset@v1
+              with:
+                upload_url: ${{ steps.create_release.outputs.upload_url }}
+                asset_path: ./out/${{ github.repository.name }}.mrpack
+                asset_name: ./out/${{ github.repository.name }}.mrpack
+                asset_content_type: application/octet-stream
